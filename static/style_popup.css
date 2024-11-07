@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 10px;
+    margin: 0;
+    width:100%;
+}
+section {
+    float:left;
+    width:50%;
+    background-color: #C5C5C5;
+}
+.modalbg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 999;
+} 
+ .modalwrap{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 1070px;
+    height: 860px;
+    background: #fff;
+    z-index: 1000;
+} 
+.pictureinfo {
+    padding: 85px 35px 20px ;
+    margin-top: 20px;
+}
+
+.image {
+    width:500px;
+    height: 560px;
+    background-image: url("reviewimages/2.jpg");
+    background-size: cover;
+    width: 100%;
+}
+.pictureinfo li {
+    float:left;
+    display: flex;
+    margin-top: 35px;
+    padding: 20px;
+}
+.selectedimage {
+    width: 120px;
+    height: 120px;
+    background-image: url("reviewimages/2.jpg");
+    background-size: cover;
+
+}
+
+.smallimage {
+    width: 120px;
+    height: 120px;
+    background-image: url("reviewimages/6.jpg");
+    background-size: cover;
+
+}
+aside{
+    float:right;
+    width:50%;
+}
+h1.title{
+    margin-left: 10px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+.titleinfo{
+    padding:10px 0 30px 40px ;
+    font-weight: bold;
+}
+.stars{
+    background-image: url("star.jpg");
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+}
+.back{
+    position: absolute;
+    right:5%;
+    margin-top: -20px;
+    background-color: transparent;
+    border-color: #006937;
+    font-size: 20px;
+    font-weight: bold;
+    color:#000;
+    border-radius: 8px;
+}
+.content
+{
+    margin-left: 50px;
+    height: 680px;
+    width: 420px;
+    border: 1px solid #C5C5C5;
+ 
+}
+.review{
+    
+    padding: 20px;
+    font-size: 18px;
+    font-weight: bold;
+
+}
+@media (max-width: 768px) {
+    section.pic {
+        width: 100%; /* Full width for mobile */
+        float: none; /* Remove float for better mobile layout */
+    }
+
+    .image, .selectedimage {
+        position: relative; /* Adjust positioning for mobile */
+        top: 0;
+        left: 0;
+        transform: none; /* Remove transform for better layout */
+    }
+}
