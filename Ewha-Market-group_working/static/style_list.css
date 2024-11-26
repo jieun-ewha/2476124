@@ -1,0 +1,185 @@
+.category_btn{
+    text-align: center;
+}
+
+.write_btn{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 150px;
+    height: 50px;
+
+    background-color: #006937;
+    border-width: 1.5px;
+    border-style: solid;
+    border-radius: 7px;
+
+    text-align: center;
+    color: white;
+    padding-top:12px;
+}
+
+
+.daily_products,
+.books,
+.ewha_goods,
+.etc {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+    text-align: center;
+
+    background-color: #ffffff;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color:#006937;
+    border-radius: 7px;
+  
+    display: inline-block;
+    min-width: 200px;
+    min-height: 25px;
+  
+    margin: 15px 2px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+  
+.daily_products:focus,
+.books:focus ,
+.ewha_goods:focus,
+.etc:focus {
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+   
+    
+    background-color: #006937;
+    color:#ffffff;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color:#006937;
+    border-radius: 7px;
+  
+    display: inline-block;
+    min-width: 200px;
+    min-height: 25px;
+  
+    margin: 15px 2px;
+    padding: 5px 15px;
+}
+
+/* 카드형태로 수정 */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* 한 줄에 5개의 아이템 */
+    gap: 10px;
+    padding: 50px 150px;
+    border: none;
+}
+  
+.product-item {
+    border:none;
+    padding: 20px;
+    text-align: center;
+}
+  
+.product-item img {
+    width: 100%;
+    height: auto;
+    padding: 20px;
+    max-width: 190px;
+    max-height: 190px; /* 이미지 최대 높이 */
+
+    object-fit: cover;
+    border-radius: 30px;
+
+}
+  
+.product-item .title {
+    font-size: 1.1em;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 10px 0 5px;
+
+    display: inline-block;
+    max-width: 180px;
+    text-align: center;
+    cursor: pointer;
+    position: relative;
+
+}
+
+  
+
+.product-item .title[data-title]:hover::after {
+    content: attr(data-title); /* data-title 속성의 값을 툴팁으로 표시 */
+    position: absolute;
+    white-space: normal;        /* 툴팁 텍스트가 여러 줄로 표시되도록 */
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    left: 0;
+    top: 100%;
+    width: auto;
+    word-wrap: break-word;
+    max-width:200px;
+    z-index: 10;
+}
+
+.product-item .title[title]:hover {
+    overflow: visible;
+}
+
+.product-item .date {
+    font-size: 0.9em;
+    color: #666;
+}
+  
+/* .pagination {
+    text-align: center;
+    margin: 0;
+}
+.pagination button {
+    padding: 5px;
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius:10px;
+    border-width:2px;
+    border-color:#006937;
+    border-style: solid;
+    background-color:white;
+    
+} */
+
+.pagination li{
+    list-style: none;
+   }
+   .page-wrap{
+    text-align: center;
+    font-size: 0;
+   }
+   .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+   }
+   .pagination a{
+    display: block;
+    margin: 0 3px;
+    float: left;
+    border: 1px solid #e6e6e6;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background-color: #fff;
+    font-size: 13px;
+    color: black;
+    text-decoration: none;
+    font-weight:bold;
+   }

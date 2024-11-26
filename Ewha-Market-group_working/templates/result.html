@@ -1,0 +1,40 @@
+{% extends "index.html" %}
+{% block section %}
+<div style="text-align: center;">
+<p><br><br>
+    <img src="{{img_path}}" style="width: 500px; height:fit-content;"/><br>
+    판매자: {{data.seller}} <br>
+    상품명: {{data.name}} <br>
+    카테고리: {{data.category}}<br>
+    
+    {% if data['condition'] == "매우 좋음" %}
+    상태: 매우 좋음
+    {% endif %}
+    {% if data['condition'] == "좋음" %}
+    상태: 좋음
+    {% endif %}
+    {% if data['condition'] == "양호" %}
+    상태: 양호
+    {% endif %}
+    {% if data['condition'] == "조금 별로" %}
+    상태: 조금 별로
+    {% endif %}
+    {% if data['condition'] == "별로" %}
+    상태: 별로
+    {% endif %}
+    <br>
+</p>
+<p>
+    {% if data['payment'] == "send" %}
+    결제 : 계좌이체
+    {% endif %}
+    {% if data['payment'] == "cash" %}
+    결제 : 현금
+    {% endif %}
+</p><br>
+<p>
+    연락처: {{data.phone}} <br>
+    주소: {{data.addr}} <br>
+</p>
+</div>
+{% endblock section %}

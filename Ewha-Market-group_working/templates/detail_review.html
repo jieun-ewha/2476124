@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style_detail_review.css') }}">
+{% endblock %}
+
+{% block section %}
+<body>
+    <div class="container">
+        <section class="item-detail">
+            <div class="back-link">
+                <a href="{{url_for('view_review',page=i)}}">←   {{title}}</a>
+            </div>
+            <div class="item-info">
+                <div class="item-image">
+                    <img src="{{ data.image }}" alt="Review Image">
+                </div>
+                <div class="item-description">
+                        <h1>{{ title }}</h1>
+                        <p><strong>등록일자:</strong> {{ data.date }}</p>
+                        <p><strong>별점:</strong> {{ data.rating }}</p>
+                        <p><strong>지불방식:</strong> {{ data.r }}</p>
+                        {% if data['card'] == "delivery" %}
+                        택배
+                        {% endif %}
+                        {% if data['card'] == "direct" %}
+                        대면
+                        {% endif %}
+                        {% if data['card'] == "locker" %}
+                        사물함
+                        {% endif %}
+                        <p><strong>내용:</strong> {{ data.content }}</p>
+                    </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+{% endblock section %}

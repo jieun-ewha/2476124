@@ -1,0 +1,53 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="static/style_review.css">
+{% endblock %}
+
+{% block section %}
+
+{% if total > 0 %}
+<div class="info">
+    <div class="review">리뷰 총 {{total}}개</div>
+        <div class="sort">
+            <button type="button" sort="recentlst" class="on">최신 순</button>
+            <button type="button" sort="highlst">별점 높은 순</button>
+            <button type="button" sort="lowlst">별점 낮은 순</button>
+    </div>
+</div>
+<section class="body">
+{% for row in rows%}
+<div class="goodlst">
+    <ol class="goods">
+        <!-- 동적으로 추가된 데이터 -->
+        {% for key, value in row.items()%}
+        <li>
+            <a  onclick="location.href='/view_detail_review/{{key}}/';" style="cursor:pointer;">
+                <img src="{{value.image}}" alt="상품" class="goods">
+                <div class="reviews">
+                    <span class="reviewtitle">{{value.title}}</span>
+                </div>
+                <div class="date">
+                    <span class="registerdate">등록일자: {{ value.date }}</span>
+                </div>
+            </a>
+        </li>
+        {% endfor %}
+    {% endfor %}
+ 
+{% else %}
+<p>등록된 상품이 없습니다.</p>
+{% endif %}
+</section>
+
+<div class="pagination" id="pagination">
+    <ul>
+      <li>
+        {% for i in range(1, page_count+1)%}
+        <a href="{{url_for('view_review', page=i)}}" color="black">{{i}}</a>
+        {% endfor %}
+      </li>
+    </ul>
+</div>
+
+{% endblock section %}

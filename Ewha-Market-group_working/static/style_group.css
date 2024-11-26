@@ -1,0 +1,152 @@
+.category_btn{
+    text-align: center;
+}
+
+.write_btn{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 150px;
+    height: 50px;
+
+    background-color: #006937;
+    border-width: 1.5px;
+    border-style: solid;
+    border-radius: 7px;
+
+    text-align: center;
+    color: white;
+    padding-top:12px;
+}
+
+.ott,
+.study,
+.delivery,
+.workout {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+    text-align: center;
+
+    background-color: #ffffff;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color:#006937;
+    border-radius: 7px;
+  
+    display: inline-block;
+    min-width: 200px;
+    min-height: 25px;
+  
+    margin: 15px 2px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+  
+.ott:focus,
+.study:focus ,
+.delivery:focus,
+.workout:focus {
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+   
+    
+    background-color: #006937;
+    color:#ffffff;
+    border-width: 1.5px;
+    border-style: solid;
+    border-color:#006937;
+    border-radius: 7px;
+  
+    display: inline-block;
+    min-width: 200px;
+    min-height: 25px;
+  
+    margin: 15px 2px;
+    padding: 5px 15px;
+}
+
+.text {
+    text-align: center;
+}
+
+/* 카드형태로 수정 */
+.group-list {
+    display: block;
+    gap: 10px;
+    border: none;
+    padding: 50px 50px;
+}
+  
+.group {
+    display: block;
+    width: 60%;
+    height:50px;
+    background-color: #e9ecef;
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 15px;
+    margin: 0 auto;
+
+    border-radius: 30px;
+    border-color: #ffffff;
+
+    margin-bottom: 20px;
+}
+
+.status-button {
+    display: inline;
+    float: right;
+    margin-top: -22px;
+    margin-right: 30px;
+
+    background-color: #006937;
+    text-align: center;
+    color:#ffffff;
+}
+  
+/* .pagination {
+    text-align: center;
+    margin: 0;
+}
+.pagination button {
+    padding: 5px;
+    margin: 0;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius:10px;
+    border-width:2px;
+    border-color:#006937;
+    border-style: solid;
+    background-color:white;
+    
+} */
+
+.pagination li{
+    list-style: none;
+   }
+   .page-wrap{
+    text-align: center;
+    font-size: 0;
+   }
+   .pagination{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+   }
+   .pagination a{
+    display: block;
+    margin: 0 3px;
+    float: left;
+    border: 1px solid #e6e6e6;
+    width: 28px;
+    height: 28px;
+    line-height: 28px;
+    text-align: center;
+    background-color: #fff;
+    font-size: 13px;
+    color: black;
+    text-decoration: none;
+    font-weight:bold;
+   }
