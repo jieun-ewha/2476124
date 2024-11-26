@@ -1,0 +1,49 @@
+{%with messages = get_flashed_messages()%}
+{%if messages %}
+  <script type="text/javascript">
+    alert("{{messages[-1]}}");
+  </script>
+  {%endif%}
+{%endwith%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!-- 좋아요 하트 위한 css -->
+    <script src="{{ url_for('static', filename='main.js') }}" defer></script>
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    {% block extrahead %}
+    {% endblock %}
+</head>
+
+<body>
+    <header id="header">
+        <div class="container">
+            <h1 class="logo">
+                <a href="/">Ewha Market</a>
+            </h1>
+            <div class="utilarea">
+                {% if session['id'] %}
+                <a href="/logout" class="logout">로그아웃</a>
+                <a href="/mypage" class="mypg">마이페이지</a>
+                {% else %}
+                <a href="/loginpage" class="login">로그인</a>
+                {% endif %}
+            </div>
+        </div>
+        <div class="link">
+            <a href="/list" class="list">상품 목록</a>
+            <a href="/review" class="reviewlist">리뷰 목록</a>
+            <a href="/group" class="grouplist">그룹 목록</a>
+        </div>
+    </header>
+
+<section>
+    {% block section %}
+
+    {% endblock section %}
+</section>
+</body>

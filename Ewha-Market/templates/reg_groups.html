@@ -1,0 +1,46 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="static/style_reg_items.css">
+{% endblock %}
+
+{% block section %}
+<form action="/submit_group" enctype="multipart/form-data" method="post">
+    <main>
+        <h2>그룹 등록</h2>
+        <div> <br><br>
+            <label for="title"> 모집글 제목 </label> <br>
+            <input type="text" name="title" id="title" placeholder="ex) 넷플릭스 4인팟 구해요" required><br><br>
+        </div>
+
+        <div>
+            <label for="phone"> 연락처 </label> <br>
+            <input type="text" name="phone" id="phone" placeholder="ex) 오카방 주소" required><br><br>
+        </div>
+
+        <div>
+            <label for="category"> 분류 </label> <br>
+            <select id="category" name="category" required>
+                <option value="OTT" selected> OTT </option>
+                <option value="study"> 스터디 </option>
+                <option value="delivery"> 배달 </option>
+                <option value="workout"> 운동 </option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label for="description"> 그룹 설명 </label> <br>
+            <textarea id="description" name="description" placeholder="ex) 넷플릭스 4인팟 3명 구합니다."
+                required></textarea>
+        </div>
+
+        <div class="buttons">
+            <button type="button" onclick="cancelForm()">작성 취소</button>
+            <button type="submit">글 게시</button>
+        </div>
+    </main>
+</form>
+
+
+<script src="js_regitems.js"></script>
+{% endblock section %}

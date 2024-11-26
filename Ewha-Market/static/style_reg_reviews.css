@@ -1,0 +1,107 @@
+body { 
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    margin: 0;
+
+}
+
+/* 리뷰 작성 페이지 스타일 */
+
+.container {
+    padding: 20px;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #006937; 
+}
+
+.review-heading {
+    font-size: 2em; /* Increase font size */
+    margin-top: 20px; /* Add more space between the navbar and the heading */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"], input[type="file"], textarea, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.submit-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.rating-section {
+    display: flex;
+    align-items: center;
+}
+
+.rating {
+    display: flex;
+    gap: 5px;
+    margin-right: 10px;
+}
+
+.star {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+}
+
+.star.selected {
+    color: #006400;
+}
+
+.file-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.file-buttons button {
+    background-color: #006400;
+    color: white;
+}
+
+.file-upload-section #file-name {
+    display: block;
+    margin-top: 10px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+}

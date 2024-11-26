@@ -1,0 +1,111 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="static/style_reg_reviews.css">
+{% endblock %}
+
+{% block section %}
+<div class="container">  
+    <h1 class="review-heading">리뷰 등록</h1>
+    <form id="reviewForm" action="/reg_reviews" method="POST" enctype="multipart/form-data">
+        <div class="form-column">
+            <div class="form-group">
+                <label for="product">상품명</label>
+                <input type="text" id="product" name="product" placeholder="상품명을 입력하세요">
+            </div>
+            <div class="form-group">
+                <label for="payment">결제 수단</label>
+                <select id="payment" name="payment">
+                    <option value="card">카드</option>
+                    <option value="bank_transfer">계좌 이체</option>
+                    <option value="cash">현금</option>
+                    <option value="point">포인트</option>
+                    <option value="other">기타</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="title">제목</label>
+                <input type="text" id="title" name="title" placeholder="ex) 최고의 책">
+            </div>
+            <div class="form-group">
+                <label for="content">내용 작성</label>
+                <textarea id="content" name="content" placeholder="ex) 추천합니다!"></textarea>
+            </div>
+        </div>
+
+        <div class="form-column">
+            <div class="form-group rating-section">
+                <label for="rating">만족도</label>
+                <div id="rating" class="rating">
+                    <span class="star" data-value="1">&#9733;</span>
+                    <span class="star" data-value="2">&#9733;</span>
+                    <span class="star" data-value="3">&#9733;</span>
+                    <span class="star" data-value="4">&#9733;</span>
+                    <span class="star" data-value="5">&#9733;</span>
+                </div>
+                <span id="rating-text">별점을 선택해주세요.</span>
+            </div>
+
+            <div class="form-group file-upload-section">
+                <label for="file">사진/동영상 첨부</label>
+                <div class="file-buttons">
+                    <button type="button" onclick="document.getElementById('file').click();">파일 첨부</button>
+                    <button type="button">사진 찍기</button>
+                </div>
+                <input type="file" id="file" name="file" style="display: none;" onchange="showFileName()">
+                <span id="file-name">Review Image upload : </span>
+            </div>
+        </div>
+
+        <div class="form-group buttons">
+            <button type="button" class="cancel-btn" onclick="cancelReview()">작성 취소</button>
+            <button type="submit" class="submit-btn">글 게시</button>
+        </div>
+    </form>
+</div>
+<script>
+    // 별점 선택 이벤트
+    document.querySelectorAll('.star').forEach(star => {
+        star.addEventListener('click', function () {
+            let value = this.getAttribute('data-value');
+
+            // 모든 별 초기화
+            document.querySelectorAll('.star').forEach(s => s.classList.remove('selected'));
+
+            // 클릭한 별과 그 왼쪽의 별들 활성화
+            let currentStar = this;
+            while (currentStar) {
+                currentStar.classList.add('selected');
+                currentStar = currentStar.previousElementSibling; // 왼쪽 별로 이동
+            }
+
+            // 선택한 별점 표시
+            document.getElementById('rating-text').textContent = `선택한 별점: ${value}점`;
+            
+            // 숨겨진 인풋 필드에 저장
+            let existingRatingInput = document.querySelector('input[name="rating"]');
+            if (!existingRatingInput) {
+                let ratingInput = document.createElement('input');
+                ratingInput.type = 'hidden';
+                ratingInput.name = 'rating';
+                this.closest('form').appendChild(ratingInput);
+                existingRatingInput = ratingInput;
+            }
+            existingRatingInput.value = value;
+        });
+    });
+
+    // 파일 이름 표시 이벤트
+    function showFileName() {
+        const fileInput = document.getElementById('file');
+        const fileNameSpan = document.getElementById('file-name');
+        const file = fileInput.files[0];
+        if (file) {
+            fileNameSpan.textContent = `선택한 파일: ${file.name}`;
+        } else {
+            fileNameSpan.textContent = 'Review Image upload :';
+        }
+    }
+</script>
+
+{% endblock section %}

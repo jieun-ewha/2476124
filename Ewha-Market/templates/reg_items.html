@@ -1,0 +1,79 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="static/style_reg_items.css">
+{% endblock %}
+
+{% block section %}
+<form action="/submit_item" enctype="multipart/form-data" method="post">
+    <main>
+        <h2>상품 등록</h2>
+        <div> <br><br>
+            <label for="name"> 상품명 : </label> <br>
+            <input type="text" name="name" id="name" placeholder="ex) 마우스" required><br><br>
+        </div>
+
+        <div>
+            <label for="price"> 가격 : </label> <br>
+            <input type="text" name="price" id="price" placeholder="ex) 00,000원" required><br><br>
+        </div>
+
+        <div>
+            <label for="addr"> 지역 : </label> <br>
+            <input type="text" name="addr" id="addr" placeholder="ex) 서대문구 이화여대길" required><br><br>
+        </div>
+
+        <div>
+            <label for="phone"> 연락처 : </label> <br>
+            <input type="text" name="phone" id="phone" placeholder="ex) 010-0000-0000" required><br><br>
+        </div>
+
+        <div>
+            <label for="payroute"> 거래 방식 : </label> <br>
+            <select id="card" name="card" required>
+                <option value="delivery" selected> 택배 </option>
+                <option value="direct"> 대면 </option>
+                <option value="locker"> 사물함 </option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label for="payment"> 결제 수단 : </label> <br>
+            <select id="payment" name="payment" required>
+                <option value="send" selected> 계좌 이체 </option>
+                <option value="cash"> 현금 </option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label for="condition"> 상태 : </label> <br>
+            <select id="condition" name="condition" required>
+                <option value="매우 좋음">매우 좋음</option>
+                <option value="좋음">좋음</option>
+                <option value="양호">양호</option>
+                <option value="조금 별로">조금 별로</option>
+                <option value="별로">별로</option>
+            </select><br><br>
+        </div>
+
+        <div>
+            <label for="description"> 상품 설명 : </label> <br>
+            <textarea id="description" name="description" placeholder="ex) 한 달 전 구매했는데 두 번밖에 안 써서 깨끗합니다."
+                required></textarea>
+        </div>
+
+        <div>
+            <label for="file"> 사진 / 동영상 첨부 : </label> <br>
+            <input type="file" name="file" id="file" /><br><br>
+        </div>
+
+        <div class="buttons">
+            <button type="button" onclick="cancelForm()">작성 취소</button>
+            <button type="submit">글 게시</button>
+        </div>
+    </main>
+</form>
+
+
+<script src="js_regitems.js"></script>
+{% endblock section %}
