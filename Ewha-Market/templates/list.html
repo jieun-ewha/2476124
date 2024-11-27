@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="static/style_list.css">
+{% endblock %}
+
+{% block section %}
+<body>
+  <div class="write_btn">
+    <a href="/reg_items" class="register">상품 등록</a>
+  </div>
+    <!-- 네비게이션 바 아래 상품 분류 필터부터 구현 -->
+    <div class="category_btn">
+        <button class="daily_products" data-filter="daily_products" onclick="loadProducts('생활용품')">
+          생활용품
+        </button>
+        <button class="books" data-filter="books" onclick="loadProducts('책')">
+          책
+        </button>
+        <button class="ewha_goods" data-filter="ewha_goods" onclick="loadProducts('이화 굿즈')">
+          이화 굿즈
+        </button>
+    </div>
+
+
+    
+    <div class="product-grid" id="products">
+    {% if total > 0 %}
+      <p>상품 총 {{total}}개</p> 
+      <table>
+        {% for row in rows%}
+        <tr>
+          {% for key, value in row.items() %}
+            <td onclick="location.href='/view_detail/{{key}}/';" style="cursor:pointer;">
+            <img src="static/images/{{value.img_path}}" width=140 height=200>
+            </td>
+          {% endfor %}
+        </tr>
+        <tr>
+          {% for key, value in row.items() %}
+          <td>{{key}}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+    {% else %}
+      <p>등록된 상품이 없습니다.</p>
+    {% endif %}
+    </div>
+    
+    <!-- 페이지네이션 버튼 -->
+    <div class="pagination" id="pagination">
+      <ul>
+        <li>
+          {% for i in range(1, page_count+1)%}
+            <a href="{{url_for('view_list', page=i)}}" color="black">{{i}}</a>
+          {% endfor %}
+        </li>
+       
+      </ul>
+    </div>
+    
+    
+
+    <script src="{{ url_for('static', filename='products.js') }}"></script>
+</body>
+{% endblock section %}

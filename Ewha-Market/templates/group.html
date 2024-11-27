@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="static/style_group.css">
+{% endblock %}
+
+{% block section %}
+<body>
+  <div class="write_btn">
+    <a href="/reg_groups" class="register">그룹 등록</a>
+  </div>
+    <!-- 네비게이션 바 아래 상품 분류 필터부터 구현 -->
+    <div class="category_btn">
+        <button class="ott" data-filter="ott" onclick="loadProducts('OTT')">
+          OTT
+        </button>
+        <button class="study" data-filter="study" onclick="loadProducts('study')">
+          스터디
+        </button>
+        <button class="delivery" data-filter="delivery" onclick="loadProducts('delivery')">
+          배달
+        </button>
+        <button class="workout" data-filter="workout" onclick="loadProducts('workout')">
+          운동
+        </button>
+    </div>
+
+
+    
+    <div class="group-list" id="groups">
+    {% if total > 0 %}
+        <p>그룹 총 {{total}}개</p> 
+        
+        {% for data in datas %}
+        
+          {% for key, value in data.items() %}
+          <div class="group">
+            <p onclick="location.href='/view_group_detail/{{key}}/';" style="cursor:pointer;">
+                {{key}}
+            </p>
+            <div class="status-button">{{value.status}}</div>
+            </div>
+          {% endfor %}
+        
+        {% endfor %}
+    {% else %}
+            <div class="text">
+        <p>등록된 그룹이 없습니다.</p>
+        </div>
+    {% endif %}
+    </div>
+    
+    <!-- 페이지네이션 버튼 -->
+    <div class="pagination" id="pagination">
+      <ul>
+        <li>
+          {% for i in range(1, page_count+1)%}
+            <a href="{{url_for('view_list', page=i)}}" color="black">{{i}}</a>
+          {% endfor %}
+        </li>
+       
+      </ul>
+    </div>
+    
+    
+
+    <script src="{{ url_for('static', filename='products.js') }}"></script>
+</body>
+{% endblock section %}

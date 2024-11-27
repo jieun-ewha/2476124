@@ -1,0 +1,117 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style_detail.css') }}">
+{% endblock %}
+
+{% block section %}
+
+<body>
+    <!-- 메인 컨텐츠 -->
+    <div class="container">
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <h2>상품 카테고리</h2>
+            <ul class="category_btn">
+                <li><button class="daily_products">생활용품</button></li>
+                <li><button class="books">책</button></li>
+                <li><button class="ewha_goods">이화 굿즈</button></li>
+                <li><button class="etc">기타</button></li>
+            </ul>
+        </aside>
+
+        <!-- 상품 상세 정보 -->
+        <section class="item-detail">
+            <div class="back-link">
+                <a href="{{url_for('view_list',page=i)}}">← {{data.category}} - {{name}}</a>
+            </div>
+            <div class="item-info">
+                <div class="item-image">
+                    <img src="../../static/images/{{data.img_path}}">
+                </div>
+                <div class="item-description">
+                    <h1>{{name}}</h1>
+                    <p><strong>상품 상태:</strong> <span class="highlight">{{data.condition}}</span></p>
+                    <p><strong>상품 설명:</strong>{{data.description}}<br></p>
+                    <p><strong>거래 방식:</strong>
+                        {% if data['card'] == "delivery" %}
+                        택배
+                        {% endif %}
+                        {% if data['card'] == "direct" %}
+                        대면
+                        {% endif %}
+                        {% if data['card'] == "locker" %}
+                        사물함
+                        {% endif %}
+                    </p>
+                    <p><strong>결제 수단:</strong>
+                        {% if data['payment'] == "send" %}
+                        계좌 이체
+                        {% endif %}
+                        {% if data['payment'] == "cash" %}
+                        현금
+                        {% endif %}
+                    </p>
+                    <p><strong>가격:</strong>{{data.price}}</p>
+                    <button class="buy_btn">구매하기</button>
+                    <button onclick="location.href='/reg_reviews_init/{{name}}/';" class="reg_review_btn">
+                        리뷰 쓰기
+                    </button>
+                    <i class="fa fa-heart" id="heart"></i>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script>
+        function showHeart() {
+            $.ajax({
+                type: 'GET',
+                url: '/show_heart/{{name}}/',
+                data: {},
+                success: function (response) {
+                    let my_heart = response['my_heart'];
+                    if (my_heart['interested'] == 'Y') {
+                        $("#heart").css("color", "red");
+                        $("#heart").attr("onclick", "unlike()");
+                    }
+                    else {
+                        $("#heart").css("color", "grey");
+                        $("#heart").attr("onclick", "like()");
+                    }
+                    //alert("showheart!")
+                }
+            });
+        }
+        function like() {
+            $.ajax({
+                type: 'POST',
+                url: '/like/{{name}}/',
+                data: {
+                    interested: "Y"
+                },
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+            });
+        }
+        function unlike() {
+            $.ajax({
+                type: 'POST',
+                url: '/unlike/{{name}}/',
+                data: {
+                    interested: "N"
+                },
+                success: function (response) {
+                    alert(response['msg']);
+                    window.location.reload()
+                }
+            });
+        }
+        $(document).ready(function () {
+            showHeart();
+        });
+    </script>
+</body>
+
+{% endblock section %}

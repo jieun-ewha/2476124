@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box; 
+    list-style:none;
+}
+body {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+#header {
+    font-weight: bold;
+    background-color: #006937;
+    padding: 20px 0;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+#header .container {
+    width: 1120px; 
+    height: 189px;
+    margin: 0 auto;
+
+}
+
+#header .logo a {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 68px;
+    color: #fff;
+}
+
+#header .utilarea {
+    position: absolute;
+    display: flex;
+    right: 5%;     
+    gap: 30px
+
+}
+
+#header .utilarea a {
+    font-size: 24px;
+    color: #fff;
+}
+
+#header .link {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    top: 160px;
+    width: 100%;
+}
+
+.link a {
+    position: relative;
+    color: #fff;
+    font-size: 30px;
+    padding: 20px 60px;
+    transition: background-color 0.3s ease;
+    border-radius: 8px;
+}
+
+.link a:hover {
+    color: #006937;
+    background-color: #fff;
+}
+
+
+@media screen and (max-width: 1000px){
+    #header .utilarea{
+        display: none;
+    }
+    
+}
+
+#heart {
+    color: grey;
+    font-size: 30px;
+}
+
+#heart.red {
+    color:red;
+}
+
+/* .login_menu:hover {
+    background-color: #037a46; 호버 시 배경 색상
+ } */

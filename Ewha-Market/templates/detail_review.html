@@ -1,0 +1,48 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style_detail_review.css') }}">
+{% endblock %}
+
+{% block section %}
+
+<body>
+    <div class="container">
+        <section class="item-detail">
+            <div class="back-link">
+                <a href="{{url_for('view_review',page=i)}}">← {{title}}</a>
+            </div>
+            <div class="item-info">
+                <div class="item-image">
+                    <img src="{{ data.image }}" alt="Review Image">
+                </div>
+                <div class="item-description">
+                    <h1>제목: {{ title }}</h1>
+                    <p><strong>상품명:</strong> {{ data.product }}</p>
+                    <p><strong>등록일자:</strong> {{ data.date }}</p>
+                    <p><strong>별점:</strong> {{ data.rating }}</p>
+                    <p><strong>거래 방식:</strong>
+                        {% if data['payment'] == "card" %}
+                        카드
+                        {% endif %}
+                        {% if data['payment'] == "bank_transfer" %}
+                        계좌이체
+                        {% endif %}
+                        {% if data['payment'] == "cash" %}
+                        현금
+                        {% endif %}
+                        {% if data['payment'] == "point" %}
+                        포인트
+                        {% endif %}
+                        {% if data['payment'] == "other" %}
+                        기타
+                        {% endif %}
+                    </p>
+                    <p><strong>내용:</strong> {{ data.content }}</p>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+
+{% endblock section %}
