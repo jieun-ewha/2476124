@@ -1,0 +1,24 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="static/style_login.css">
+{% endblock %}
+
+{% block section %}
+<div class="loginbox">
+    <form method="POST" action="/login" enctype="multipart/form-data"><br><br>
+        <div class="input-field">
+           아이디 &nbsp&nbsp&nbsp&nbsp<input type="text" class="input" name="id" placeholder="아이디" required>
+        </div>
+        <div class="input-field">
+          비밀번호 &nbsp&nbsp&nbsp&nbsp<input type="password" class="input" name="pw" placeholder="비밀번호" required>
+        </div><br><br>
+        <div class="input-field">
+          <input type="submit" class="submit" value="로그인하기">
+        </div>
+        <div>
+          <a href="/registerpage" class="registerpage">회원가입</a>
+        </div>
+    </form>
+</div>
+{% endblock section %}

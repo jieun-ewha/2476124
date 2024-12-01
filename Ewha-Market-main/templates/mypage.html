@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style_mypage.css') }}">
+{% endblock %}
+
+{% block section %}
+<main>
+    <h2>마이페이지</h2>
+
+    <div class="signupBox">
+        <div>
+            <label for="id"> 아이디</label>
+            <div class="custom-box">{{ data.id }}</div>
+        </div>
+
+        <div>
+            <label for="email"> 이메일 주소</label>
+            <div class="custom-box">{{ data.email }}</div>
+        </div>
+
+        <div>
+            <label for="phone"> 핸드폰 번호</label>
+            <div class="custom-box">{{ data.phone }}</div>
+        </div>
+    </div>
+</main>
+{% endblock section %}

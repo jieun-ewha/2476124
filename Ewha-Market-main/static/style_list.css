@@ -1,0 +1,171 @@
+
+
+.category_btn {
+    text-align: center;
+}
+
+
+/* 버튼 기본 디자인 */
+button {
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 17px;
+    text-align: center;
+    background-color: #ffffff;
+    border: 1.5px solid #006937;
+    border-radius: 7px;
+    display: inline-block;
+    min-width: 200px;
+    min-height: 25px;
+    margin: 20px 2px 35px 2px;
+    padding: 5px 15px;
+    cursor: pointer;
+    color: black;
+    transition: all 0.1s ease;
+}
+
+/* 버튼 클릭된 상태 */
+button.active {
+    background-color: #006937; 
+    color: #ffffff;
+    border-color: #006937;
+}
+
+
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+/* 
+tr {
+    margin: 10px;
+    padding: 10px;
+} */
+
+
+/* 상품 컨테이너 */
+#products {
+    border: none;
+    text-align: left;
+    padding-bottom: 10px;
+}
+
+
+
+#products img, td{
+    width: 190px;
+    height: 190px;
+    margin: 5px 30px 8px;
+    padding-top:5px;
+    object-fit: cover;
+    border-radius: 30px;
+
+}
+
+
+
+/* 상품명 */
+.product-title[data-title]:hover::after {
+    content: attr(data-title);
+    /* data-title 속성의 값을 툴팁으로 표시 */
+    position: absolute;
+    white-space: normal;
+    /* 툴팁 텍스트가 여러 줄로 표시되도록 */
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 5px;
+    border-radius: 3px;
+    font-size: 12px;
+    left: 0;
+    top: 100%;
+    width: auto;
+    word-wrap: break-word;
+    max-width: 200px;
+    z-index: 10;
+}
+
+.product-title[title]:hover {
+    overflow: visible;
+}
+
+.product-title {
+    font-size: 16px;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-left: 30px;
+    margin-bottom:5px;
+    display: inline-block;
+    max-width: 200px;
+    text-align: left;
+    cursor: pointer;
+    position: relative;
+
+}
+
+/* 상품가격 */
+.product-price{
+    font-size:13px;
+    margin-left: 30px;
+    margin-bottom: 30px;
+    color:#626262;
+}
+
+/* 상품등록 버튼 */
+.write_btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 150px;
+    height: 50px;
+
+    background-color: #006937;
+    border-width: 1.5px;
+    border-style: solid;
+    border-radius: 7px;
+
+    font-size: 17px;
+    text-align: center;
+    color: white;
+    padding-top: 12px;
+}
+
+/* 페이지네이션 */
+.pagination {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    justify-content: center;
+}
+
+.pagination li {
+    margin: 0 5px;
+list-style:none;
+}
+
+.pagination li a {
+    color: black; 
+    padding: 5px 10px;
+    font-weight: bold;
+    border: 1.5px solid #006937;
+    border-radius: 7px; 
+}
+
+.pagination li a:hover {
+    background-color: #006937;
+    color: white;
+}
+
+.pagination li.current-page a {
+    background-color: #006937;
+    color: white;
+    pointer-events: none;
+    cursor: default;
+}
+
+
+
+

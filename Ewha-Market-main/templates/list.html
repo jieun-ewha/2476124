@@ -1,0 +1,116 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="static/style_list.css">
+{% endblock %}
+
+{% block section %}
+<script>
+  $(document).ready(function () {
+    //alert("{{category}}");
+    $('#category option:contains("{{category}}")').prop("selected", true);
+  });
+</script>
+
+<body>
+  <!-- 상품 등록 버튼 -->
+  <div class="write_btn">
+    <a href="/reg_items" class="register">상품 등록</a>
+  </div>
+  <!-- 네비게이션 바 아래 상품 분류 필터부터 구현 -->
+  <div class="category_btn">
+    <button class="daily_products" data-filter="daily_products"
+      onclick="location.href='{{url_for('view_list', page=i, category='daily_products')}}';">
+      생활용품
+    </button>
+    <button class="books" data-filter="books"
+      onclick="location.href='{{ url_for('view_list', category='books', page=i) }}';">
+      책
+    </button>
+    <button class="ewha_goods" data-filter="ewha_goods"
+      onclick="location.href='{{ url_for('view_list', category='ewha_goods', page=i) }}';">
+      이화 굿즈
+    </button>
+  </div>
+
+
+<!-- 
+  {% for item in datas %}
+  <div class="product">
+    <img src="{{ item.img_path }}" alt="{{ item.title }}">
+    <h3>{{ item.title }}</h3>
+    <p>{{ item.price }}</p>
+  </div>
+  {% endfor %} -->
+
+
+  <!-- <div class="category_btn">
+    <button class="daily_products" data-filter="daily_products" onclick="location.href='/view_list/{{daily_products}}/';">
+      생활용품
+    </button>
+    <button class="books" data-filter="books" onclick="location.href='/view_list/{{books}}/';">
+      책
+    </button>
+    <button class="ewha_goods" data-filter="ewha_goods" onclick="location.href='/view_list/{{category}}/';">
+      이화 굿즈
+    </button>
+  </div> -->
+
+
+  <div class="product-container" id="products">
+    {% if total > 0 %}
+    <!-- <p>상품 총 {{total}}개</p>  -->
+    <table>
+      {% for row in rows%}
+      <tr>
+        {% for key, value in row %}
+        <td onclick="location.href='/view_detail/{{key}}/';" style="cursor:pointer;">
+          <img src="static/images/{{value.img_path}}" alt="{{key}}">
+          <div class="product-title" data-title="{{key}}">
+            {{key}}
+          </div>
+          <div class="product-price">가격: {{ value.price }}</div>
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+    {% else %}
+    <p>등록된 상품이 없습니다.</p>
+    {% endif %}
+  </div>
+
+  <!-- 페이지네이션 -->
+  <div class="pagination" id="pagination">
+    {% for i in range(1, page_count+1)%}
+    <li class="{% if i == page %}current-page{% endif %}">
+      <a href="{{url_for('view_list', page=i)}}" color="black">{{i}}</a>
+    </li>
+    {% endfor %}
+
+  </div>
+
+
+
+
+  <script>
+    // 버튼 클릭 시 active 클래스 추가/삭제
+    document.addEventListener("DOMContentLoaded", function () {
+      const buttons = document.querySelectorAll(".category_btn button");
+
+      buttons.forEach(button => {
+        button.addEventListener("click", function () {
+          if (this.classList.contains("active")) {
+            this.classList.remove("active");
+          }
+          else {
+            buttons.forEach(btn => btn.classList.remove("active"));
+            this.classList.add("active");
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+{% endblock section %}

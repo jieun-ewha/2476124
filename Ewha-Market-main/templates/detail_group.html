@@ -1,0 +1,38 @@
+{% extends "index.html" %}
+
+{% block extrahead %}
+<link rel="stylesheet" href="{{ url_for('static', filename='style_detail.css') }}">
+{% endblock %}
+
+{% block section %}
+<body>
+    <!-- 메인 컨텐츠 -->
+    <div class="container">
+        <!-- 사이드바 -->
+        <aside class="sidebar">
+            <h2>상품 카테고리</h2>
+            <ul class="category_btn">
+                <li><button class = "ott">OTT</button></li>
+                <li><button class = "study">스터디</button></li>
+                <li><button class = "delivery">배달</button></li>
+                <li><button class = "workout">운동</button></li>
+            </ul>
+        </aside>
+
+        <!-- 상품 상세 정보 -->
+        <section class="item-detail">
+            <div class="back-link">
+                <a href="{{url_for('view_group',page=i)}}">← {{data.category}}</a>
+            </div>
+            <div class="item-info">
+                <div class="item-description">
+                    <h1>{{title}}</h1>
+                    <p><strong>연락처 : </strong>{{data.phone}}</p><br>
+                    <div class="description">{{data.description}}<br><br><br></div>
+                    
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+{% endblock section %}
